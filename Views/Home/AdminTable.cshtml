@@ -1,0 +1,38 @@
+﻿@model List<User>
+
+<h2>Admin Table</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>User Type(1-> Admin, 2-> Normal User)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserId</td>
+                <td>@user.NameA</td>
+                <td>@CalculateAge(user.Birthday)</td>
+                <td>@user.UserTypeId</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@functions {
+    public int CalculateAge(DateTime dateOfBirth)
+    {
+        // Calculate and return the age based on the date of birth
+        var today = DateTime.Today;
+        var age = today.Year - dateOfBirth.Year;
+        if (dateOfBirth > today.AddYears(-age))
+            age--;
+
+        return age;
+    }
+}

@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model AniversaryApp.Models.User
+
+<h2>Login</h2>
+
+<form asp-action="Login" method="post">
+
+    <div class="form-group">
+        <label asp-for="NameA">Username:</label>
+        <input asp-for="NameA" class="form-control" />
+        <span asp-validation-for="UserNameA" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PasswordA">Password:</label>
+        <input asp-for="PasswordA" class="form-control" />
+        <span asp-validation-for="PasswordA" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>

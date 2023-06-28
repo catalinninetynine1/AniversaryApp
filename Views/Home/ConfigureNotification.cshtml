@@ -1,0 +1,35 @@
+﻿@model List<User>
+
+@{
+    ViewData["Title"] = "Configure Notification";
+}
+
+<h1>Configure Notification</h1>
+
+@foreach (var user in Model)
+{
+    <h3>@user.NameA</h3>
+    <form method="post" action="/Home/SaveNotificationConfiguration">
+        <input type="hidden" name="UserId" value="@user.UserId" />
+        <label>Notification Days:</label>
+        <input type="number" name="NotificationDays"/> @*aici sa mai pun zilele cand primesc notificare*@
+        <button type="submit"onclick="SendBirthdayNotifications()">Send Notifications</button>
+    </form>
+}
+<script>
+    function SendBirthdayNotifications(){
+        $.ajax({
+            url: '/Home/SendBirthdayNotifications',
+            success: function (response) {
+               debugger;
+                //alert("Notification Sent to users");
+                
+            },
+            error: function (xhr, status, error) {
+                // Handle error response
+                // Display error message or perform other actions
+                console.log('Error:', error);
+            }
+        });
+    }
+</script>
